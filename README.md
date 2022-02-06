@@ -14,4 +14,4 @@ The files in this repository allow to do the following computations:
 
 ## Data presentation
 
-See this webpage.
+See [this webpage](https://louishainaut.github.io/GH-ConfSpace/).
