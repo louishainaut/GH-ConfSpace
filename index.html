@@ -275,7 +275,7 @@ print("Success!")
     
     <div class="sage">
         <script type="text/x-sage">
-def Focus_Cohomology(Hom, Focus = "Sym", partition = None, codim = 1, Filtered = False):
+def Focus_Cohomology(Hom, partition, Focus = "Sym", codim = 1, Filtered = False):
     if Focus == "Sym":
         if Filtered:
             return [Focus_SymGroup(el, partition) for el in Hom[1-codim]]
@@ -301,6 +301,13 @@ def Forget_Equivariance(Hom, Forget = "Sym", genus = 0, codim = 1, Filtered = Fa
             return [Forget_GL(el, genus) for el in Hom[1-codim]]
         else:
             return Forget_GL(sum(Hom[1-codim]), genus)
+        
+def Compute_Trace(Hom, evalues, partition, codim = 1, Filtered = False):
+    new_val = [el.expand(len(evalues))(evalues) for el in Hom[codim-1]]
+    if Filtered:
+        return [el.scalar(s(partition)) for el in new_val]
+    else:
+        return sum(el.scalar(s(partition)) for el in new_val)
         
 def Restrict_Genus(Hom, genus):
     if genus <= 0:
@@ -365,6 +372,35 @@ print("Success!")
         </script>
     </div>
   
+  <p> The following two cells can be used to display the results. The first one contains functions which can be used to see the cohomology of configuration spaces on a wedge of spheres from different angles.
+    We will describe these functions and their parameters below. The second cell is designed specifically for our estimation of the cohomology of $\mathcal{M}_{2,n}$.
+    
+    <div class="sage">
+        <script type="text/x-sage">
+
+n = 8
+Hom = Compute_LowerBound(n, 1)
+Hom = Improve_LowerBound(n, 1, Hom)
+
+for part in Partitions(n):
+    print(part, " : ", Focus_Cohomology(Hom, part)
+    
+# print(Focus_Cohomology(Hom, [2,1], Focus = "GL")
+# print(Forget_Equivariance(Hom, Forget = "GL", genus = 2)
+# print(Forget_Equivariance(Hom, Forget = "Sym", codim = 0)
+# for part in Partitions(n):
+#    print(part, " : ", Compute_Trace(Hom, [2,1], part))
+
+        </script>
+    </div>
+    
+    <div class = "sage">
+        <script type="text/x-sage">
+
+n = 10
+Repr = Cohomology_M2n(n)
+for part in Partitions(n):
+    print(part, " : ", Repr.scalar(s(part)))
     
 </body>
 </html>
