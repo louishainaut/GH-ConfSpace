@@ -372,18 +372,41 @@ print("Success!")
         </script>
     </div>
   
-  <p> The following two cells can be used to display the results. The first one contains functions which can be used to see the cohomology of configuration spaces on a wedge of spheres from different angles.
-    We will describe these functions and their parameters below. The second cell is designed specifically for our estimation of the cohomology of $\mathcal{M}_{2,n}$. </p>
+  <p> The first three lines need to be present the first time this cell is computed. If you run the cell multiple times without changing the value of n we suggest commenting the
+    first three lines to avoid unnecessary computations. These three lines need to be computed again every time you change the value of n.
     
+  <p> Available functions are </p>
+      <p><code>Focus_Cohomology(Hom, partition, Focus = "Sym", codim = 1, Filtered = False)</code></p>
+      <p class="tab">This function gives the isotypical component of the cohomology of configuration spaces corresponding to the given partition, representing either a \(S_n\)-representation or a \(GL\) representation.<br>
+          <code>Hom</code>, symmetric function in two variables, encoding the simultaneous action of \(S_n\) and of \(GL\). Will get computed at the beginning of the cell. <br>
+          <code>partition</code>, integer partition. The sum of its parts must be equal to \(n\) if the variable Focus assumes the value "Sym", if Focus assumes the value "GL" this sum must be at most \(n-1\).<br>
+          <code>Focus</code>, string, can only take one of the two values "Sym" or "GL". In the first case it outputs the \(GL\)-multiplicity of the \(S_n\)-representation associated to the given partition. In the second case it outputs the \(S_n\) multiplicity of the Schur functor associated with the given partition.<br>
+          <code>codim</code>, integer, can only take the value 0 or 1. In the first case it outputs the cohomology \(H_c^n(F(X, n))\). In the second case it outputs the cohomology \(H_c^{n-1}(F(X,n))\).<br>
+          <code>Filtered</code>, boolean, only matters when the variable Focus assumes the value "Sym". If set to False the function outputs a symmetric function. If set to True the function outputs a list of symmetric functions corresponding to each piece of the polynomial filtration.
+          </p>
+      <p><code>Forget_Equivariance(Hom, Forget = "Sym", genus = 0, codim = 1, Filtered = False)</code></p>
+      <p class="tab">This function gives the cohomology of configuration spaces decomposed according to only one of the two actions of \(S_n\) and \(GL\).<br>
+          <code>Hom</code>, symmetric function in two variables, encoding the simultaneous action of \(S_n\) and of \(GL\). Will get computed at the beginning of the cell. <br>
+          <code>Forget</code>, string, can only take one of the two values "Sym" or "GL". In the first case it replaces all \(S_n\) multiplicities by their dimension, in the second case it replaces all the \(GL\) multiplicities by their dimension. <br>
+          <code>genus</code>, integer. Only necessary when Forget assumes the value "GL". Indicates the number of spheres of the space \(X\). <br>
+          <code>codim</code>, integer, can only take the value 0 or 1. In the first case it outputs the cohomology \(H_c^n(F(X, n))\). In the second case it outputs the cohomology \(H_c^{n-1}(F(X,n))\).<br>
+          <code>Filtered</code>, boolean. If set to False the function outputs a symmetric function. If set to True the function outputs a list of symmetric functions corresponding to each piece of the polynomial filtration.
+          </p>
+      <p><code>Compute_Trace(Hom, evalues, partition, codim = 1, Filtered = False)</code></p>
+      <p class="tab">This function computes the trace under the \(GL\)-action of a diagonal matrix on our cohomology groups.<br>
+          </p>
+   
     <div class="sage">
         <script type="text/x-sage">
-
+        
+# You may change the value of n to another (small) value. If you run this cell multiple times with the same value of n you can after the first time
+# comment the next three lines by placing the symbol # at the beginning of each line.
 n = 8
 Hom = Compute_LowerBound(n, 1)
 Hom = Improve_LowerBound(n, 1, Hom)
 
 for part in Partitions(n):
-    print(part, " : ", Focus_Cohomology(Hom, part)
+    print(part, " : ", Focus_Cohomology(Hom, part))
     
 # print(Focus_Cohomology(Hom, [2,1], Focus = "GL")
 # print(Forget_Equivariance(Hom, Forget = "GL", genus = 2)
