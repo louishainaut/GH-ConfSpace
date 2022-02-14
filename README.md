@@ -3,7 +3,9 @@
 This repository contains the code related to the article "Configuration spaces on a wedge of spheres and higher Hochschild homology" by Nir Gadish and Louis Hainaut
 
 ## Abstract
-
+We study the compactly supported rational cohomology of configuration spaces of points on wedges of spheres, equipped with natural actions of the symmetric group and the group $\Out(F_g)$ of outer automorphism of the free group. These representations are closely related to higher Hochschild homology with coefficients in square-zero algebras, and they show up in seemingly unrelated parts of mathematics, from cohomology of moduli spaces of curves to polynomial functors on free groups.
+	
+We show that these cohomology representations form a polynomial functor, and use various geometric models to compute a substantial part of its decomposition factors. We further compute the decomposition factors completely for all configurations of $n\leq 10$ particles. An application of this analysis is a new super-exponential lower bound on the symmetric group action on the weight $0$ component of $H^*_c(\mathcal{M}_{2,n})$.
 
 ## Code
 
