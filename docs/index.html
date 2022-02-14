@@ -55,7 +55,7 @@ code {
       The coefficients \(\Phi^p[n,m]\) decompose as a direct sum of \(\Phi^p[\lambda, \mu]\otimes (\chi_{\lambda}\boxtimes\chi_{\mu})\) over all partitions \(\lambda\vdash n\) and \(\mu\vdash m\) and these pieces are what is computed here.</p>
   
     <p>The isotypical components of the cohomology groups \(H_c^n(F(X,n))\) and \(H_c^{n-1}(F(X,n))\) correspond respectively the the bead representations \(U_{\lambda}^{I}\) and \(U_{\lambda}^{II}\) defined by Turchin-Willwacher.
-      Also, by work of Powell-Vespa, the codimension 0 case \(\bigoplus_{p=0}^n{\Phi^p[\lambda, n-p]\otimes(\mathbb{Q}^g)^{\otimes n}\) gives the injective envelope \(\omega\beta_d S_{\lambda^{\dagger}}\) in the category of outer functors of the Schur functor \(S_{\lambda^{\dagger}}\) associated with the transposed partition \(\lambda^{\dagger}\) of \(\lambda\). </p>.
+      Also, by work of Powell-Vespa, the codimension 0 case \(\bigoplus_{p=0}^n{\Phi^p[\lambda, n-p]\otimes(\mathbb{Q}^g)^{\otimes n}}\) gives the injective envelope \(\omega\beta_d S_{\lambda^{\dagger}}\) in the category of outer functors of the Schur functor \(S_{\lambda^{\dagger}}\) associated with the transposed partition \(\lambda^{\dagger}\) of \(\lambda\). </p>.
   
     <p>Our results also provide information about the compactly supported cohomology groups of \(\mathcal{M}_{2,n}\) in weight 0. These cohomology groups are nonzero only in degrees \(n+3, n+2\) (called respectively the codimension 0 and codimension 1 case). We precomputed the result up to \(n=17\) and provide ways of visualizing the result in the last part of this page. </p>
   
@@ -277,13 +277,19 @@ def Improve_LowerBound(particles, dimension, Hom, Partial = False):
 
         return Hom
 
-def Cohomology_ConfSpace(n, dim=1):
+global Mem_Hom
+global Mem_Dim
+Mem_Hom = [[s.zero()],[s.zero()]]
+Mem_Dim = 0
+
+def Cohomology_ConfSpace(n, dim=1, Hom = Mem_Hom, prev_dim = Mem_Dim):
     if (len(Hom[0]) == n and prev_dim == dim):
         return Hom
     
     Hom = Compute_LowerBound(n, dim)
-    Hom = Improve_LowerBound(n, dim, Hom)
-    return Hom
+    Mem_Hom = Improve_LowerBound(n, dim, Hom)
+    Mem_Dim = dim
+    return Mem_Hom
 
 def Focus_Cohomology(Hom, partition, Focus = "Sym", codim = 1, Filtered = False):
     if Focus == "Sym":
@@ -345,9 +351,6 @@ def Restr_Genus(element, genus):
 
 def trace_GL_irrep(part, eigenvalues):
     return s[part].expand(len(eigenvalues))(eigenvalues)
-    
-global Hom = [[s.zero()],[s.zero()]]
-global prev_dim = 0
 
 print("Success!")
         </script>
