@@ -57,7 +57,7 @@ code {
     <p>The isotypical components of the cohomology groups \(H_c^n(F(X,n))\) and \(H_c^{n-1}(F(X,n))\) correspond respectively the the bead representations \(U_{\lambda}^{I}\) and \(U_{\lambda}^{II}\) defined by Turchin-Willwacher.
       Also, by work of Powell-Vespa, the codimension 0 case \(\bigoplus_{p=0}^n{\Phi^p[\lambda, n-p]\otimes(\mathbb{Q}^g)^{\otimes n}\) gives the injective envelope \(\omega\beta_d S_{\lambda^{\dagger}}\) in the category of outer functors of the Schur functor \(S_{\lambda^{\dagger}}\) associated with the transposed partition \(\lambda^{\dagger}\) of \(\lambda\). </p>.
   
-    <p>Our results also provide information about the compactly supported cohomology groups of \(\mathcal_{2,n}\) in weight 0. These cohomology groups are nonzero only in degrees \(n+3, n+2\) (called respectively the codimension 0 and codimension 1 case). We precomputed the result up to \(n=17\) and provide ways of visualizing the result in the last part of this page. </p>
+    <p>Our results also provide information about the compactly supported cohomology groups of \(\mathcal{M}_{2,n}\) in weight 0. These cohomology groups are nonzero only in degrees \(n+3, n+2\) (called respectively the codimension 0 and codimension 1 case). We precomputed the result up to \(n=17\) and provide ways of visualizing the result in the last part of this page. </p>
   
     <p>In the section <a href="#data">Data Presentation</a> we present our results about the compactly supported cohomology of configuration spaces on a wedge of circles. If you are only interested in the cohomology of \(\mathcal{M}_{2,n}\) you should go directly to <a href="#moduli">Moduli spaces</a>. Keep in mind that all our results presented here are exact up to \(n=10\), and only provide a lower bound beyond.</p>
   
@@ -346,16 +346,13 @@ def Restr_Genus(element, genus):
 def trace_GL_irrep(part, eigenvalues):
     return s[part].expand(len(eigenvalues))(eigenvalues)
     
-Hom = [[s.zero()],[s.zero()]]
-prev_dim = 0
+global Hom = [[s.zero()],[s.zero()]]
+global prev_dim = 0
 
 print("Success!")
         </script>
     </div>
   
-  <p> The first three lines need to be present the first time this cell is computed. If you run the cell multiple times without changing the value of n we suggest commenting the
-    first three lines to avoid unnecessary computations. These three lines need to be computed again every time you change the value of n. </p>
-    
   <p> Available functions are </p>
       <p><code>Cohomology_ConfSpace(n, dim=1)</code></p>
       <p class="tab">This function produces the decomposition of the cohomology of configuration spaces. It should always be called first when running the cell.<br>
@@ -390,8 +387,6 @@ print("Success!")
     <div class="sage">
         <script type="text/x-sage">
         
-# You may change the value of n to another (small) value. If you run this cell multiple times with the same value of n you can after the first time
-# comment the next three lines by placing the symbol # at the beginning of each line.
 n = 8
 Hom = Cohomology_ConfSpace(n)
 
@@ -513,7 +508,7 @@ def Precomputed_M2n(n):
         </script>
     </div>
 
-  <p>The cell below shows our computations for the cohomology of \(\mathcal{M}_{2,n}\) in weight 0. This cell can work independently from the other ones. It provides the following function:</p>
+  <p>The cell below shows our computations for the cohomology of \(\mathcal{M}_{2,n}\) in weight 0. You will need to evaluate the cell above the first time in order to have the functions defined, otherwise this cell can work from the ones in the previous section. It provides the following function:</p>
   <p><code>Cohomology_M2n(particles, Hom = None, codim = 1)</code></p>
     <p class="tab">This function gives the cohomology of the moduli space \(\mathcal{M}_{2,n}\). The result is exact up to 10 points. For values between 11 and 17 it is only a lower bound.<br>
         <code>points</code>, integer, number of marked points. <br>
