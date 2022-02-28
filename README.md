@@ -1,6 +1,6 @@
 # Configuration spaces on a wedge of spheres
 
-This repository contains the code related to the article "Configuration spaces on a wedge of spheres and higher Hochschild homology" by Nir Gadish and Louis Hainaut
+This repository contains the code related to the article "[Configuration spaces on a wedge of spheres and higher Hochschild homology](https://arxiv.org/abs/2202.12494)" by Nir Gadish and Louis Hainaut
 
 ## Abstract
 We study the compactly supported rational cohomology of configuration spaces of points on wedges of spheres, equipped with natural actions of the symmetric group and the group Out(F_g) of outer automorphism of the free group. These representations are closely related to higher Hochschild homology with coefficients in square-zero algebras, and they show up in seemingly unrelated parts of mathematics, from cohomology of moduli spaces of curves to polynomial functors on free groups.
