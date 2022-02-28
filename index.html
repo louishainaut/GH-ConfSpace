@@ -356,15 +356,15 @@ print("Success!")
           </p>
       <p><code>Focus_Cohomology(Hom, partition, Focus = "Sym", codim = 1, Filtered = False)</code></p>
       <p class="tab">This function gives the isotypical component of the cohomology of configuration spaces corresponding to the given partition, representing either a \(S_n\)-representation or a \(GL\) representation.<br>
-          <code>Hom</code>, symmetric function in two variables, encoding the simultaneous action of \(S_n\) and of \(GL\). Will get computed at the beginning of the cell. <br>
-          <code>partition</code>, integer partition. The sum of its parts must be equal to \(n\) if the variable Focus assumes the value "Sym", if Focus assumes the value "GL" this sum must be at most \(n-1\).<br>
+          <code>Hom</code>, symmetric function in two variables, encoding the simultaneous action of \(S_n\) and of \(GL\). Use the value computed at the beginning of the cell. <br>
+          <code>partition</code>, integer partition. The sum of its parts must be equal to \(n\) if the variable Focus assumes the value "Sym", if Focus assumes the value "GL" this sum must be at most \(n-\)<code>codim</code>.<br>
           <code>Focus</code>, string, can only take one of the two values "Sym" or "GL". In the first case it outputs the \(GL\)-multiplicity of the \(S_n\)-representation associated to the given partition. In the second case it outputs the \(S_n\) multiplicity of the Schur functor associated with the given partition.<br>
           <code>codim</code>, integer, can only take the value 0 or 1. In the first case it outputs the cohomology \(H_c^n(F(X, n))\). In the second case it outputs the cohomology \(H_c^{n-1}(F(X,n))\).<br>
           <code>Filtered</code>, boolean, only matters when the variable Focus assumes the value "Sym". If set to False the function outputs a symmetric function. If set to True the function outputs a list of symmetric functions corresponding to each piece of the polynomial filtration.
           </p>
       <p><code>Forget_Equivariance(Hom, Forget = "Sym", genus = 0, codim = 1, Filtered = False)</code></p>
       <p class="tab">This function gives the cohomology of configuration spaces decomposed according to only one of the two actions of \(S_n\) and \(GL\).<br>
-          <code>Hom</code>, symmetric function in two variables, encoding the simultaneous action of \(S_n\) and of \(GL\). Will get computed at the beginning of the cell. <br>
+          <code>Hom</code>, symmetric function in two variables, encoding the simultaneous action of \(S_n\) and of \(GL\). Use the value computed at the beginning of the cell. <br>
           <code>Forget</code>, string, can only take one of the two values "Sym" or "GL". In the first case it replaces all \(S_n\) multiplicities by their dimension, in the second case it replaces all the \(GL\) multiplicities by their dimension. <br>
           <code>genus</code>, integer. Only necessary when Forget assumes the value "GL". Indicates the number of spheres of the space \(X\). <br>
           <code>codim</code>, integer, can only take the value 0 or 1. In the first case it outputs the cohomology \(H_c^n(F(X, n))\). In the second case it outputs the cohomology \(H_c^{n-1}(F(X,n))\).<br>
@@ -372,7 +372,7 @@ print("Success!")
           </p>
       <p><code>Compute_Trace(Hom, evalues, partition, codim = 1, Filtered = False)</code></p>
       <p class="tab">This function computes the trace under the \(GL\)-action of a diagonal matrix on our cohomology groups.<br>
-          <code>Hom</code>, symmetric function in two variables, encoding the simultaneous action of \(S_n\) and of \(GL\). Will get computed at the beginning of the cell. <br>
+          <code>Hom</code>, symmetric function in two variables, encoding the simultaneous action of \(S_n\) and of \(GL\). Use the value computed at the beginning of the cell. <br>
           <code>evalues</code>, list. Eigenvalues of the diagonal matrix to be evaluated. <br>
           <code>partition</code>, integer partition; the sum of its parts must be equal to \(n\). Outputs the trace of the corresponding \(S_n\) partition. <br>
           <code>codim</code>, integer, can only take the value 0 or 1. In the first case it outputs the cohomology \(H_c^n(F(X, n))\). In the second case it outputs the cohomology \(H_c^{n-1}(F(X,n))\).<br>
@@ -504,7 +504,7 @@ def Precomputed_M2n(n):
     </div>
 
   <p>The cell below shows our computations for the cohomology of \(\mathcal{M}_{2,n}\) in weight 0. You will need to evaluate the cell above the first time in order to have the functions defined, otherwise this cell can work from the ones in the previous section. It provides the following function:</p>
-  <p><code>Cohomology_M2n(particles, Hom = None, codim = 1)</code></p>
+  <p><code>Cohomology_M2n(points, Hom = None, codim = 1)</code></p>
     <p class="tab">This function gives the cohomology of the moduli space \(\mathcal{M}_{2,n}\). The result is exact up to 10 points. For values between 11 and 17 it is only a lower bound.<br>
         <code>points</code>, integer, number of marked points. <br>
         <code>Hom</code>, Cohomology of configurations on a wedge of spheres. If set to None the function utilizes precomputed value. If you want to give a value you should compute it as in the previous section.<br>
