@@ -84,7 +84,7 @@ def Lie(n):
 # necessary terms are computed and are added to the appropriate term on the E1 page
 def aux_func(part, chain_comp):
     l = part.to_exp()
-    return prod( s[l[i]].plethysm(chain_comp[i+1]) for i in range(len(l)) )
+    return prod( s[l[i]].plethysm(chain_comp[i+1]) for i in range(len(l)) if l[i] != 0)
 
 
 def E1(particles, dimension, line, col, CTot):
