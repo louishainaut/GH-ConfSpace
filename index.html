@@ -510,13 +510,13 @@ def Precomputed_M2n(n):
     <p class="tab">This function gives the cohomology of the moduli space \(\mathcal{M}_{2,n}\). The result is exact up to 10 points. For values between 11 and 17 it is only a lower bound.<br>
         <code>points</code>, integer, number of marked points. <br>
         <code>Hom</code>, Cohomology of configurations on a wedge of spheres. If set to None the function utilizes precomputed value. If you want to give a value you should compute it as in the previous section.<br>
-        <code>codim</code>, integer, can only take the value 0 or 1. In the first case it outputs the cohomology \(H_c^{n+3}(\mathcal{M}_{2,n})\). In the second case it outputs the cohomology \(H_c^{n+2}(\mathcal{M}_{2,n})\).<br>
+        <code>codim</code>, integer, can only take the value 0 or 1. In the first case it outputs the homology \(H_{n+3}(\mathcal{M}_{2,n})\). In the second case it outputs the homology \(H_{n+4}(\mathcal{M}_{2,n})\).<br>
         </p>
   
   <p> You may also use the following function:</p>
   <p><code>dimension(SymFunc, n)</code></p>
     <p class="tab">This function gives the dimension of the degree \(n\) piece of a symmetric function.<br>
-        <code>SymFunc</code>, symmetrif function, only the degree n part of this symmetric function matters. <br>
+        <code>SymFunc</code>, symmetric function, only the degree n part of this symmetric function matters. <br>
         <code>n</code>, integer. Degree in which we want to compute the dimension. <br>
         </p>
   
